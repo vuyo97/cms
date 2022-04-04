@@ -1,0 +1,127 @@
+nav{
+    margin-top:-15px
+}
+.top-menu{
+    height: 55px;
+    width: 100vw;
+    background-color: #f9f6f6;
+    /* padding-bottom: 2px; */
+    overflow: hidden;
+}
+span.username {
+    font-size: 15px;
+}
+.logo{
+    height:150px;
+    color:rgb(78, 78, 182);
+    padding : 0px 0px;
+}
+
+#loginbtn{
+    border-left: 1px solid lightgrey;
+    cursor: pointer;
+}
+.rsLogo{
+    color:rgb(78, 78, 182);
+    font-size:large;
+    padding : 0px 0px;
+    display: none;
+}
+
+a{
+    text-transform: none;
+    text-decoration:none;
+}
+/*********/
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+nav ul li.logo{
+    height:52px;
+    color:rgb(78, 78, 182);
+}
+nav ul div.items{
+    display: inline-flex;
+    width: 100%;
+    color: rgb(53,61,100);;
+    font-size: 30px;
+}
+nav ul div.items a{
+    text-decoration: none;
+    font-size: 17px;
+    font-weight:550;
+    padding:0 13px;
+    clear: right;
+}
+nav ul div.items a:hover{
+    transition : ease-in 0.5s;
+     opacity:0.5;
+}
+
+nav ul div.items li{
+    line-height: 35px;
+}
+
+label {
+    margin: 0px 0px 7px 10px;
+    font-size: 24px;
+    line-height: auto;
+    display: none;
+    width: 26px;
+    /* float: right; */
+    left: 0;
+}
+#toggle {
+    display: none;
+}
+/*********/
+
+@media screen and (max-width: 500px) {
+    #loginbtn{
+        border-left: none;
+        cursor: pointer;
+    }
+    .rsLogo{
+        position: fixed;
+        display: inline-flex;
+        margin: 5px 150px;
+        font-weight: 600;
+    }
+    nav ul li.search-container{
+        margin: auto;
+    }
+
+    label {
+        display: inline-block;
+        cursor: pointer;
+        height: 30px;
+        background-color: inherit;
+        width: 100%;
+    }
+    nav ul div.items{
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+    .items a{
+        display: block;
+        //border-bottom: 1px solid #EAEAEB;
+        margin: 0;
+    }
+    .items>a:active + .items{
+         transform-origin: 0% 10%;
+        transform: translate(0,0%);
+        z-index: 2;
+        display: none;
+     }
+     
+   
+    #toggle:checked + .items {
+        display: block;
+    }
+   
+
+}

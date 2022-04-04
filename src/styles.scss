@@ -1,0 +1,33 @@
+@import 'src/assets/modules/font';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// primary font
+$primary_font: 'RobotoCondensed';
+$thin:100;
+$light:300;
+$regular:400;
+$bold:700;
+$black:900;
+
+// Font size
+$font-xs:12px;
+$font-sm: 14px;
+$primary-fs: 16px;
+$font-md: 18px;
+$font-lg: 20px;
+
+body {
+    font-family: $primary_font !important;
+    font-size: $primary-fs;
+    font-weight: $regular;
+}
+.main{
+    padding-top:8px;
+    margin-bottom: 60px;
+}
+
+a :hover{
+color:rgb(53,61,100)
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

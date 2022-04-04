@@ -1,0 +1,131 @@
+<p-toast></p-toast>
+<div class="w3-container main">
+    <!-- Modal -->
+    <div id="customerModal" class="w3-modal w3-round">
+        <div class="w3-modal-content w3-animate-left w3-card-4" mat-dialog-header>
+          <header class="w3-container w3-teal" style="padding:12px"> 
+            <span onclick="document.getElementById('customerModal').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <h2>Add Customer</h2>
+          </header>
+          <div class="w3-container" mat-dialog-content >
+            <form [formGroup]="customerForm" class="example-form" style="display: table-caption;width: 100%;height:auto;padding:16px">
+                <mat-form-field appearance="fill" style="width:800px">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput placeholder="Company Name" formControlName="company_name" required>
+                </mat-form-field>
+               
+                <mat-form-field class="example-full-width" appearance="fill" style="width:800px">
+                    <mat-label>Email</mat-label>
+                  <input type="email" matInput formControlName="email" [formControl]="emailFormControl" placeholder="pat@example.com">
+                  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                </mat-form-field>
+
+                 <mat-form-field appearance="fill" style="width:800px">
+                    <mat-label>Contact Number</mat-label>
+                    <input matInput type="tel" placeholder="Contact Number" formControlName="phone_number" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="width:800px">
+                    <mat-label>Address</mat-label>
+                    <textarea matInput placeholder="974 Hoepker Court" formControlName="address" required></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" style="width:800px">
+                    <mat-label>IP Address</mat-label>
+                    <input matInput placeholder="IP Address" formControlName="ip_address" required>
+                </mat-form-field>
+              </form>
+          </div>
+        <footer class="w3-container w3-row w3-teal" style="padding:12px">
+            <!-- <button class="w3-button w3-maroon w3-text-white" onclick="document.getElementById('customerModal').style.display='none'" ></button>        -->
+            <button mat-raised-button color="primary" (click)="saveCustomer()">Save</button> 
+            <button mat-raised-button color="warn" style="margin-left:8px" mat-dialog-close onclick="document.getElementById('customerModal').style.display='none'" >Close</button> 
+        </footer>
+        </div>
+     </div>
+
+    <button onclick="document.getElementById('customerModal').style.display='block'"
+    class="w3-button w3-round w3-text-white w3-grey w3-hover-opacity" style="margin-bottom:8px;">Add Customer</button>
+
+    <div class="w3-container w3-col m12 l12 w3-center">
+        <p-table [value]="customers" [paginator]="true" [rows]=[5] [rowsPerPageOptions]=[5,10,15] 
+        [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} customers"
+        editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="company">Company <p-sortIcon field="company"></p-sortIcon></th>
+                    <th pSortableColumn="Email">Email <p-sortIcon field="Email"></p-sortIcon></th>
+                    <th pSortableColumn="Number">Tel No <p-sortIcon field="Number"></p-sortIcon></th>
+                    <th pSortableColumn="Address">Address <p-sortIcon field="Address"></p-sortIcon></th>
+                    <th pSortableColumn="IP">IP Address <p-sortIcon field="IP"></p-sortIcon></th>
+                    <th> </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer let-editing="editing" let-ri="rowIndex">
+                <tr [pEditableRow]="customer">
+                    <td pEditableColumn> 
+                        <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="customer.company_name">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{customer.company_name}}
+                        </ng-template>
+                        </p-cellEditor>
+            </td>
+            <td pEditableColumn> 
+                <p-cellEditor>
+                <ng-template pTemplate="input">
+                    <input pInputText type="text" [(ngModel)]="customer.email">
+                </ng-template>
+                <ng-template pTemplate="output">
+                    {{customer.email}}
+                    </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn> 
+                    <p-cellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="customer.phone_number">
+                    </ng-template>
+                    <ng-template pTemplate="output">
+                        {{customer.phone_number}}
+                        </ng-template>
+                    </p-cellEditor>
+                    </td>
+                    <td pEditableColumn> 
+                        <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="customer.address">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{customer.address}}
+                        </ng-template>
+                    </p-cellEditor>
+                        </td>
+                        <td pEditableColumn> 
+                            <p-cellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="customer.ip_address">
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{customer.ip_address}} 
+                            </ng-template>
+                        </p-cellEditor></td>
+                    <td style="text-align:center">
+                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(customer)" class="p-button-rounded p-button-text"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(customer)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(customer, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
