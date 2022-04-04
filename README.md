@@ -1,6 +1,6 @@
 # Hammond
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.0. and PrimeNg for UI components
 
 ## Development server
 1. Git clone the project into your local machine
