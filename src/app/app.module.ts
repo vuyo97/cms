@@ -20,6 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
 
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { DialogModule } from 'primeng/dialog';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -40,6 +42,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     TableModule,
+    DialogModule,
+    ConfirmDialogModule,
     BrowserAnimationsModule,
     BreadcrumbModule,
     FormsModule,

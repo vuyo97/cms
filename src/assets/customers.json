@@ -1,27 +1,11 @@
 {
   "customers": [
     {
-      "id": 1,
-      "company_name": "Talane",
-      "email": "mmattevi0@addtoany.com",
-      "ip_address": "167.186.73.32",
-      "phone_number": "939-213-4022",
-      "address": "974 Hoepker Court"
-    },
-    {
-      "id": 2,
-      "company_name": "Oyoloo",
-      "email": "edutnall1@weather.com",
-      "ip_address": "123.133.85.2",
-      "phone_number": "368-910-0363",
-      "address": "43 Bultman Road"
-    },
-    {
       "id": 3,
-      "company_name": "Voonte",
+      "company_name": "Voontez",
       "email": "ccleall2@zdnet.com",
       "ip_address": "141.104.198.208",
-      "phone_number": "233-828-4083",
+      "phone_number": "233-828-4073",
       "address": "92 Northport Place"
     },
     {
@@ -121,20 +105,20 @@
       "address": "2 Birchwood Drive"
     },
     {
-      "company_name": "Test Company",
-      "email": "vuyoxhamfu@gmail.com",
-      "phone_number": "0824627403",
-      "ip_address": "123.67.88.9",
-      "address": "87 broadacres drive",
-      "id": 16
-    },
-    {
       "company_name": "PnP",
       "email": "pnp@pnp.com",
       "phone_number": "0114657834",
       "ip_address": "123.67.88.9",
       "address": "Epsom downs",
       "id": 17
+    },
+    {
+      "company_name": "Test Company",
+      "email": "vuyoxhamfu@gmail.com",
+      "phone_number": "0824627403",
+      "ip_address": "123.67.88.9",
+      "address": "87 broadacres drive",
+      "id": 18
     }
   ]
 }

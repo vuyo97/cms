@@ -53,18 +53,28 @@
     <button onclick="document.getElementById('customerModal').style.display='block'"
     class="w3-button w3-round w3-text-white w3-grey w3-hover-opacity" style="margin-bottom:8px;">Add Customer</button>
 
-    <div class="w3-container w3-col m12 l12 w3-center">
-        <p-table [value]="customers" [paginator]="true" [rows]=[5] [rowsPerPageOptions]=[5,10,15] 
+    <div class="w3-container w3-col m12 l12">
+        <p-table #dt1 [value]="customers" dataKey="id" [paginator]="true" [rows]=[5] [rowsPerPageOptions]=[5,10,15] 
         [showCurrentPageReport]="true" responsiveLayout="scroll"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} customers"
+        [globalFilterFields]="['company_name','email','address']"
         editMode="row">
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="company">Company <p-sortIcon field="company"></p-sortIcon></th>
-                    <th pSortableColumn="Email">Email <p-sortIcon field="Email"></p-sortIcon></th>
-                    <th pSortableColumn="Number">Tel No <p-sortIcon field="Number"></p-sortIcon></th>
-                    <th pSortableColumn="Address">Address <p-sortIcon field="Address"></p-sortIcon></th>
-                    <th pSortableColumn="IP">IP Address <p-sortIcon field="IP"></p-sortIcon></th>
+                    <th >Company <p-columnFilter type="text" field="company_name" display="menu"></p-columnFilter></th>
+                    <th pSortableColumn="email">Email <p-columnFilter type="text" field="email" display="menu"></p-columnFilter></th>
+                    <th pSortableColumn="phone_number">Tel No <p-sortIcon field="phone_number"></p-sortIcon></th>
+                    <th pSortableColumn="address">Address <p-sortIcon field="address"></p-sortIcon></th>
+                    <th pSortableColumn="ip_address">IP Address <p-sortIcon field="ip_address"></p-sortIcon></th>
                     <th> </th>
                 </tr>
             </ng-template>
@@ -123,9 +133,12 @@
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(customer)" class="p-button-rounded p-button-text"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(customer)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(customer, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteProduct(customer)"></button>
+
                     </td>
                 </tr>
             </ng-template>
         </p-table>
     </div>
 </div>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
