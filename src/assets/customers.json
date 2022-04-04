@@ -105,7 +105,7 @@
       "address": "2 Birchwood Drive"
     },
     {
-      "company_name": "PnP",
+      "company_name": "PnPay",
       "email": "pnp@pnp.com",
       "phone_number": "0114657834",
       "ip_address": "123.67.88.9",
@@ -115,10 +115,10 @@
     {
       "company_name": "Test Company",
       "email": "vuyoxhamfu@gmail.com",
-      "phone_number": "0824627403",
+      "phone_number": "0114657834",
       "ip_address": "123.67.88.9",
-      "address": "87 broadacres drive",
-      "id": 18
+      "address": "45 thassle hood",
+      "id": 22
     }
   ]
 }

@@ -8,8 +8,6 @@ import { ConfirmationService } from 'primeng/api';
 import {ErrorStateMatcher} from '@angular/material/core';
 import * as $ from 'jquery';
 
-
-
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
@@ -107,11 +105,13 @@ deleteProduct(customer: Customer) {
       this.customerService.postCustomer(this.customerForm.value).subscribe({
         next:(res: any)=>{
           this.messageService.add({severity:'success', summary: 'Success', detail:'Customer added successfully'});
+          this.customerForm.reset();
+          $('#customerModal').hide('slow');
         },
         error:()=>{
           this.messageService.add({severity:'error', summary: 'Error', detail:'Form Invalid!'});
           this.customerForm.reset();
-          $("#customerModal" ).hide("slow");
+          $('#customerModal').hide('slow');
         }
       })
     }else{
